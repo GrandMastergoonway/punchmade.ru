@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Punchmade</title>
   <style>
     body {
       margin: 0;
       background-color: black;
-      text-align: center;
       color: white;
       font-family: Arial, sans-serif;
+      text-align: center;
     }
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      margin-top: 50px;
+    .video-wrapper {
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
     }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 80%;
-      height: 100%;
+    .video-box iframe {
+      width: 480px;
+      height: 270px;
       border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
     }
 
     .footer {
@@ -45,8 +43,14 @@
 </head>
 <body>
 
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/VBBrdmxhWmE?autoplay=1&controls=0&rel=0&modestbranding=1&showinfo=0&mute=1&loop=1&playlist=VBBrdmxhWmE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <div class="video-wrapper">
+    <div class="video-box">
+      <iframe
+        src="https://www.youtube.com/embed/VBBrdmxhWmE?autoplay=1&mute=1&controls=0&loop=1&rel=0&modestbranding=1&playlist=VBBrdmxhWmE"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
 
   <div class="footer">
