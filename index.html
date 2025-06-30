@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Punchmade</title>
   <style>
     body {
@@ -10,24 +11,20 @@
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-    }
-
-    .video-wrapper {
-      margin-top: 100px;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      min-height: 100vh;
     }
 
-    .video-box iframe {
-      width: 480px;
-      height: 270px;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    video {
+      width: 80%;
+      max-width: 800px;
+      margin: 20px 0;
     }
 
     .footer {
-      margin-top: 20px;
       font-size: 14px;
     }
 
@@ -43,15 +40,7 @@
 </head>
 <body>
 
-  <div class="video-wrapper">
-    <div class="video-box">
-      <iframe
-        src="https://www.youtube.com/embed/VBBrdmxhWmE?autoplay=1&mute=1&controls=0&loop=1&rel=0&modestbranding=1&playlist=VBBrdmxhWmE"
-        allow="autoplay; encrypted-media"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
+  <video src="x.mp4" controls autoplay muted loop></video>
 
   <div class="footer">
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
