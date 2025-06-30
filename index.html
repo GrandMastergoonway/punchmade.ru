@@ -2,19 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Test</title>
+  <title>Punchmade</title>
   <style>
     body {
       margin: 0;
       background-color: black;
       text-align: center;
       color: white;
+      font-family: Arial, sans-serif;
     }
 
-    video {
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
       margin-top: 50px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 80%;
-      max-width: 800px;
+      height: 100%;
+      border: none;
     }
 
     .footer {
@@ -34,10 +45,9 @@
 </head>
 <body>
 
-  <video controls autoplay muted loop>
-    <source src="x.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/VBBrdmxhWmE?autoplay=1&controls=0&rel=0&modestbranding=1&showinfo=0&mute=1&loop=1&playlist=VBBrdmxhWmE" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 
   <div class="footer">
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
