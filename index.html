@@ -18,10 +18,20 @@
       min-height: 100vh;
     }
 
-    video {
-      width: 80%;
-      max-width: 800px;
+    a.video-link {
+      display: inline-block;
       margin: 20px 0;
+      padding: 12px 24px;
+      background-color: #1e90ff;
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    a.video-link:hover {
+      background-color: #0d6efd;
     }
 
     .footer {
@@ -40,10 +50,7 @@
 </head>
 <body>
 
-  <video controls autoplay muted loop playsinline>
-    <source src="./x.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+  <a class="video-link" href="https://punchmade.ru/x.mp4" target="_blank">📹 Watch the Video</a>
 
   <div class="footer">
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
