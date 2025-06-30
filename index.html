@@ -1,30 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Punchmade</title>
+  <meta charset="UTF-8">
+  <title>Video Test</title>
   <style>
     body {
       margin: 0;
       background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      color: white;
     }
 
     video {
+      margin-top: 50px;
       width: 80%;
       max-width: 800px;
-      margin: 20px 0;
     }
 
     .footer {
+      margin-top: 20px;
       font-size: 14px;
     }
 
@@ -40,7 +34,10 @@
 </head>
 <body>
 
-  <video src="x.mp4" controls autoplay muted loop></video>
+  <video controls autoplay muted loop>
+    <source src="x.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="footer">
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
@@ -48,4 +45,3 @@
 
 </body>
 </html>
-
