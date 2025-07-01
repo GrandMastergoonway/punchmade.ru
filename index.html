@@ -40,51 +40,42 @@
 
     .scam-tag {
       position: fixed;
-      left: 20px;
+      left: 10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #00ff00;
-      font-size: 24px;
+      color: #888;
+      font-size: 14px;
       writing-mode: vertical-rl;
       text-orientation: mixed;
-      animation: pulse 1s infinite;
+      letter-spacing: 1px;
     }
 
     .datetime {
       position: fixed;
-      right: 20px;
-      top: 20px;
-      color: #00ff00;
-      font-size: 16px;
+      right: 10px;
+      top: 10px;
+      color: #888;
+      font-size: 12px;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    .music-indicator {
+    .separator {
       display: inline-block;
-      width: 2px;
-      height: 20px;
-      background-color: #00ff00;
-      animation: bounce 0.5s infinite alternate;
-      margin-left: 5px;
+      width: 1px;
+      height: 12px;
+      background-color: #888;
+      margin: 0 4px;
       vertical-align: middle;
-    }
-
-    @keyframes bounce {
-      from { height: 5px; }
-      to { height: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="datetime" id="datetime">Loading...</div>
+  <div class="datetime" id="datetime">
+    <span id="time"></span><span class="separator"></span><span id="date"></span>
+  </div>
 
   <div class="scam-tag">
-    Punchmade - Scam <span class="music-indicator"></span> Tag
+    PUNCHMADE<span class="separator"></span>SCAM TAG
   </div>
 
   <video controls autoplay muted loop playsinline>
@@ -97,24 +88,31 @@
   </div>
 
   <script>
-    // Update date and time
+    // Update time and date separately
     function updateDateTime() {
       const now = new Date();
-      const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric',
+      
+      // Time format: HH:MM
+      const time = now.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit'
-      };
-      document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+        hour12: false
+      });
+      
+      // Date format: DD/MM/YY
+      const date = now.toLocaleDateString('en-US', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+      }).replace(/\//g, '/');
+      
+      document.getElementById('time').textContent = time;
+      document.getElementById('date').textContent = date;
     }
 
-    // Update immediately and then every secon
+    // Update immediately and then every minute
     updateDateTime();
-    setInterval(updateDateTime, 1000);
+    setInterval(updateDateTime, 60000);
   </script>
 
 </body>
