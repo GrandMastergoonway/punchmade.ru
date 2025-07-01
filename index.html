@@ -17,6 +17,7 @@
       justify-content: center;
       min-height: 100vh;
       position: relative;
+      padding-top: 40px; /* Space for top bar */
     }
 
     video {
@@ -34,93 +35,55 @@
       text-decoration: none;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* System Bar Styles */
-    .system-bar {
+    /* Top Taskbar */
+    .taskbar {
       position: fixed;
-      bottom: 0;
+      top: 0;
       left: 0;
       right: 0;
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 8px 15px;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 10px 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #333;
-      font-size: 12px;
-    }
-
-    .audio-controls {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+      border-bottom: 1px solid #333;
+      font-size: 14px;
       color: #aaa;
     }
 
-    .track-name {
-      font-weight: bold;
-    }
-
-    .track-time {
-      color: #777;
-    }
-
-    .volume-slider {
-      width: 80px;
-      height: 4px;
-      -webkit-appearance: none;
-      background: #333;
-      outline: none;
-    }
-
-    .volume-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 10px;
-      height: 10px;
-      background: #aaa;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-
-    .volume-icon {
-      color: #777;
-      font-size: 11px;
-    }
-
-    /* Scam Tag */
     .scam-tag {
-      position: fixed;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #888;
-      font-size: 14px;
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
 
-    /* Date Time */
-    .datetime {
-      position: fixed;
-      right: 10px;
-      top: 10px;
-      color: #888;
-      font-size: 12px;
+    .pulse-line {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background-color: #aaa;
+      animation: pulse 0.8s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .time {
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
 
-  <div class="datetime" id="datetime">
-    <span id="time">00:00</span> • <span id="date">01/01/24</span>
-  </div>
-
-  <div class="scam-tag">
-    PUNCHMADE • SCAM TAG
+  <!-- Top Taskbar -->
+  <div class="taskbar">
+    <div class="scam-tag">
+      PUNCHMADE - SCAM TAG <span class="pulse-line"></span>
+    </div>
+    <div class="time" id="time">00:00:00</div>
   </div>
 
   <video controls autoplay muted loop playsinline>
@@ -132,49 +95,22 @@
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
   </div>
 
-  <!-- System Bar -->
-  <div class="system-bar">
-    <div class="audio-controls">
-      <span class="track-name">PLAYING: RUSS</span>
-      <span class="track-time">0:45</span>
-      <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
-      <span class="volume-icon">VOL</span>
-    </div>
-  </div>
-
   <script>
-    // Update time and date
-    function updateDateTime() {
+    // Update time
+    function updateTime() {
       const now = new Date();
-      
-      // Time format: HH:MM
       const time = now.toLocaleTimeString('en-US', {
+        hour12: false,
         hour: '2-digit',
         minute: '2-digit',
-        hour12: false
+        second: '2-digit'
       });
-      
-      // Date format: DD/MM/YY
-      const date = now.toLocaleDateString('en-US', {
-        day: '2-digit',
-        month: '2-digit',
-        year: '2-digit'
-      }).replace(/\//g, '/');
-      
       document.getElementById('time').textContent = time;
-      document.getElementById('date').textContent = date;
     }
 
-    // Update immediately and then every minute
-    updateDateTime();
-    setInterval(updateDateTime, 60000);
-
-    // Volume control
-    const volumeSlider = document.getElementById('volumeSlider');
-    volumeSlider.addEventListener('input', function() {
-      // You would implement actual volume control here
-      // For example: document.querySelector('video').volume = this.value / 100;
-    });
+    // Update immediately and then every second
+    updateTime();
+    setInterval(updateTime, 1000);
   </script>
 
 </body>
