@@ -38,6 +38,59 @@
       text-decoration: underline;
     }
 
+    /* System Bar Styles */
+    .system-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 8px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #333;
+      font-size: 12px;
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: #aaa;
+    }
+
+    .track-name {
+      font-weight: bold;
+    }
+
+    .track-time {
+      color: #777;
+    }
+
+    .volume-slider {
+      width: 80px;
+      height: 4px;
+      -webkit-appearance: none;
+      background: #333;
+      outline: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 10px;
+      height: 10px;
+      background: #aaa;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .volume-icon {
+      color: #777;
+      font-size: 11px;
+    }
+
+    /* Scam Tag */
     .scam-tag {
       position: fixed;
       left: 10px;
@@ -50,6 +103,7 @@
       letter-spacing: 1px;
     }
 
+    /* Date Time */
     .datetime {
       position: fixed;
       right: 10px;
@@ -57,25 +111,16 @@
       color: #888;
       font-size: 12px;
     }
-
-    .separator {
-      display: inline-block;
-      width: 1px;
-      height: 12px;
-      background-color: #888;
-      margin: 0 4px;
-      vertical-align: middle;
-    }
   </style>
 </head>
 <body>
 
   <div class="datetime" id="datetime">
-    <span id="time"></span><span class="separator"></span><span id="date"></span>
+    <span id="time">00:00</span> • <span id="date">01/01/24</span>
   </div>
 
   <div class="scam-tag">
-    PUNCHMADE<span class="separator"></span>SCAM TAG
+    PUNCHMADE • SCAM TAG
   </div>
 
   <video controls autoplay muted loop playsinline>
@@ -87,8 +132,18 @@
     Punchmade.ru | <a href="https://discord.gg/playfab" target="_blank">Discord</a>
   </div>
 
+  <!-- System Bar -->
+  <div class="system-bar">
+    <div class="audio-controls">
+      <span class="track-name">PLAYING: RUSS</span>
+      <span class="track-time">0:45</span>
+      <input type="range" id="volumeSlider" min="0" max="100" value="50" class="volume-slider">
+      <span class="volume-icon">VOL</span>
+    </div>
+  </div>
+
   <script>
-    // Update time and date separately
+    // Update time and date
     function updateDateTime() {
       const now = new Date();
       
@@ -113,6 +168,13 @@
     // Update immediately and then every minute
     updateDateTime();
     setInterval(updateDateTime, 60000);
+
+    // Volume control
+    const volumeSlider = document.getElementById('volumeSlider');
+    volumeSlider.addEventListener('input', function() {
+      // You would implement actual volume control here
+      // For example: document.querySelector('video').volume = this.value / 100;
+    });
   </script>
 
 </body>
