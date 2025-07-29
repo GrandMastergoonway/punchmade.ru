@@ -53,7 +53,17 @@
     .scam-tag {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 15px;
+    }
+
+    .scam-tag a {
+      color: #aaa;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .scam-tag a:hover {
+      color: white;
     }
 
     .pulse-line {
@@ -79,7 +89,9 @@
 
   <div class="taskbar">
     <div class="scam-tag">
-      PUNCHMADE - RICH OFF SCAMS 
+      <a onclick="window.location.reload()">PUNCHMADE</a>
+      <a href="https://punchmade.ru/method" target="_blank">METHOD</a>
+      <a href="https://t.me/yourtelegram" target="_blank">TELEGRAM</a>
     </div>
     <div class="time" id="time">00:00:00</div>
   </div>
