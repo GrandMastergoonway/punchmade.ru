@@ -1,1 +1,181 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punchmade</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      position: relative;
+      padding-top: 40px; 
+    }
+
+    .footer {
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #1e90ff;
+      text-decoration: none;
+    }
+
+    .taskbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .scam-tag {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .scam-tag a {
+      color: #aaa;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .scam-tag a:hover {
+      color: white;
+    }
+
+    .pulse-line {
+      display: inline-block;
+      width: 1px;
+      height: 14px;
+      background-color: #aaa;
+      animation: pulse 0.8s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .time {
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+    }
+
+    .boxes-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .box {
+      border: 1px solid #333;
+      width: 250px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .box:hover {
+      border-color: #555;
+    }
+
+    .box-title {
+      font-size: 18px;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .box-content {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 15px;
+      filter: blur(4px);
+      user-select: none;
+    }
+
+    .purchase-btn {
+      background-color: #333;
+      padding: 8px 15px;
+      font-size: 14px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .purchase-btn:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="taskbar">
+    <div class="scam-tag">
+      <a onclick="window.location.reload()">PUNCHMADE</a>
+      <a href="#" onclick="alert('Contact us on Telegram to purchase')">METHOD</a>
+      <a href="#" onclick="alert('Contact us on Telegram')">TELEGRAM</a>
+    </div>
+    <div class="time" id="time">00:00:00</div>
+  </div>
+
+  <div class="boxes-container">
+    <div class="box">
+      <div class="box-title">1. CC Sites</div>
+      <div class="box-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl.</div>
+      <button class="purchase-btn" onclick="alert('Contact @username on Telegram to purchase')">Purchase To Open</button>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">2. Paypal Logs</div>
+      <div class="box-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl.</div>
+      <button class="purchase-btn" onclick="alert('Contact @username on Telegram to purchase')">Purchase To Open</button>
+    </div>
+    
+    <div class="box">
+      <div class="box-title">3. Nitro Method</div>
+      <div class="box-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nisl nisl aliquam nisl.</div>
+      <button class="purchase-btn" onclick="alert('Contact @username on Telegram to purchase')">Purchase To Open</button>
+    </div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+      document.getElementById('time').textContent = time;
+    }
+
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+
+</body>
+</html>
